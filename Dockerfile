@@ -1,26 +1,23 @@
 FROM centos:7
 
-# Install Git
+# Step 1 - Installing Git
 RUN yum install -y git
 
-# Install Python
+#Step 2 - Installing Python
 RUN yum install -y python
 
-# Install Java 11
+#Step 3 - Installing Java 11
 RUN yum install -y java-11-openjdk
 
-# Install OpenSSH
+#Step 4 - Install OpenSSH
 RUN yum install -y openssh-server
 
-# Enable SSH access
+#Step 5 - Enable SSH access
 RUN echo 'root:password' | chpasswd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN ssh-keygen -A
 
-# Set the default Java version
-#RUN alternatives --set java /usr/lib/jvm/java-11-openjdk-$(arch)/bin/java
-
-# Add environment variables (optional)
+#Step 6 - Adding environment variables to the JAVA(optional)
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH=$PATH:$JAVA_HOME/bin
 
