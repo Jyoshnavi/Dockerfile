@@ -21,9 +21,4 @@ RUN ssh-keygen -A
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH=$PATH:$JAVA_HOME/bin
 
-# Set the working directory (optional)
-WORKDIR /app
-
-# Add your application files (if needed)
-# Specify the default command to run when the container starts (optional)
 CMD ["/bin/bash"]
